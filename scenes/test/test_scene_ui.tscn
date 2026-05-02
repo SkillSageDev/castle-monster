@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://ddu4d4crbc618"]
+
+[ext_resource type="Texture2D" uid="uid://i6omco5tm4wi" path="res://assets/Ui/Receptacle/Heart.png" id="1_1nymt"]
+[ext_resource type="Texture2D" uid="uid://dxcn2iqgccd1l" path="res://assets/player.png" id="3_81dsk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rhlf"]
+atlas = ExtResource("1_1nymt")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ccxi"]
+atlas = ExtResource("1_1nymt")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gn1jp"]
+atlas = ExtResource("1_1nymt")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3yr6"]
+atlas = ExtResource("1_1nymt")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j25fo"]
+atlas = ExtResource("1_1nymt")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tjjxo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6rhlf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ccxi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gn1jp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3yr6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j25fo")
+}],
+"loop": true,
+"name": &"heart",
+"speed": 5.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_3sr8u"]
+script/source = "extends AnimatedSprite2D
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass
+"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7nqy0"]
+texture = ExtResource("3_81dsk")
+texture_margin_left = 5.0
+texture_margin_top = 10.0
+texture_margin_right = 5.0
+expand_margin_left = 100.0
+expand_margin_top = 100.0
+expand_margin_right = 100.0
+expand_margin_bottom = 100.0
+region_rect = Rect2(0, 48, 48, 48)
+
+[sub_resource type="Theme" id="Theme_6rhlf"]
+Panel/styles/panel = SubResource("StyleBoxTexture_7nqy0")
+
+[node name="TestSceneUI" type="CanvasLayer" unique_id=737009381]
+
+[node name="Control" type="Control" parent="." unique_id=1047820190]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control" unique_id=167039546]
+position = Vector2(192, 576)
+scale = Vector2(4.8749986, 4.8749986)
+sprite_frames = SubResource("SpriteFrames_tjjxo")
+animation = &"heart"
+script = SubResource("GDScript_3sr8u")
+
+[node name="Panel" type="Panel" parent="Control" unique_id=691871406]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -136.0
+offset_right = 136.0
+offset_bottom = -24.0
+grow_vertical = 0
+theme = SubResource("Theme_6rhlf")

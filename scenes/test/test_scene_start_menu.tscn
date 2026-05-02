@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://1dis6p77bqcu"]
+
+[ext_resource type="Theme" uid="uid://btf11hucsyyw6" path="res://themes/button_theme.tres" id="1_xbox4"]
+[ext_resource type="Theme" uid="uid://deyjpiakrxdkb" path="res://themes/title_theme.tres" id="2_ljr2e"]
+
+[sub_resource type="Gradient" id="Gradient_ljr2e"]
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w4noe"]
+gradient = SubResource("Gradient_ljr2e")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[node name="StartMenu" type="Control" unique_id=1883624502]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="." unique_id=1126683032]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_w4noe")
+
+[node name="Title" type="Label" parent="." unique_id=302337762]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -454.0
+offset_top = -276.0
+offset_right = 454.0
+offset_bottom = -147.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_ljr2e")
+text = "Castle Monster"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=305284809]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = 5.0
+offset_right = 256.0
+offset_bottom = 165.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+
+[node name="Start" type="Button" parent="VBoxContainer" unique_id=1417918583]
+layout_mode = 2
+theme = ExtResource("1_xbox4")
+text = "START"
+
+[node name="Quit" type="Button" parent="VBoxContainer" unique_id=987746517]
+layout_mode = 2
+theme = ExtResource("1_xbox4")
+text = "QUIT"

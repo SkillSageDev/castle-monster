@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://2wdkulgmv1y8"]
+
+[ext_resource type="PackedScene" uid="uid://bllx635pb3jm3" path="res://assets/skull.glb" id="1_1bx6h"]
+
+[sub_resource type="Skin" id="Skin_1bx6h"]
+
+[node name="skull" unique_id=251816466 instance=ExtResource("1_1bx6h")]
+
+[node name="Mesh" parent="." index="0" unique_id=2133094501]
+skin = SubResource("Skin_1bx6h")
+skeleton = NodePath("../Skeleton3D")
+
+[node name="Skeleton3D" type="Skeleton3D" parent="." index="1" unique_id=2098941732]

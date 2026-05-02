@@ -17,6 +17,10 @@ config/features=PackedStringArray("4.6", "Mobile")
 
 project/assembly_name="Castle Monster"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 click={

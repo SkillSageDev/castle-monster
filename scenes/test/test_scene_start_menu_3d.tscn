@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://i2r3k45gxk0t"]
+
+[ext_resource type="Theme" uid="uid://deyjpiakrxdkb" path="res://themes/title_theme.tres" id="1_2s6tm"]
+[ext_resource type="PackedScene" uid="uid://8o3gjgbud33w" path="res://assets/lion_eyes.glb" id="1_m5y0i"]
+[ext_resource type="Script" uid="uid://cxqmnmqgwo3x5" path="res://scripts/lion_eyes.gd" id="2_iwxrf"]
+[ext_resource type="Theme" uid="uid://btf11hucsyyw6" path="res://themes/button_theme.tres" id="2_m5y0i"]
+
+[sub_resource type="Gradient" id="Gradient_iwxrf"]
+offsets = PackedFloat32Array(0.9752475, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w4noe"]
+gradient = SubResource("Gradient_iwxrf")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Environment" id="Environment_ljr2e"]
+ambient_light_energy = 0.0
+
+[node name="StartMenu" type="Control" unique_id=1883624502]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="." unique_id=1126683032]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_w4noe")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2009372807]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=224894038]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 80
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=305284809]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Title" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=302337762]
+layout_mode = 2
+theme = ExtResource("1_2s6tm")
+text = "Castle 
+Monster"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Start" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=1417918583]
+layout_mode = 2
+theme = ExtResource("2_m5y0i")
+text = "START"
+
+[node name="Quit" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=987746517]
+layout_mode = 2
+theme = ExtResource("2_m5y0i")
+text = "QUIT"
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1425314723]
+layout_mode = 0
+offset_left = 696.0
+offset_top = -56.0
+offset_right = 1208.0
+offset_bottom = 456.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=702676403]
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport" unique_id=653653210]
+environment = SubResource("Environment_ljr2e")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport" unique_id=1475702955]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -6.443445, 7.060919, 0)
+current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport" unique_id=760814682]
+
+[node name="Sketchfab_Scene" parent="SubViewportContainer/SubViewport" unique_id=1785190104 instance=ExtResource("1_m5y0i")]
+script = ExtResource("2_iwxrf")

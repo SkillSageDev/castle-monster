@@ -132,6 +132,7 @@ height = 18.0
 
 [node name="Player" type="CharacterBody2D" unique_id=2044208380]
 script = ExtResource("1_ru62r")
+sprint_speed = 200.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=514011017]
 sprite_frames = SubResource("SpriteFrames_dferu")

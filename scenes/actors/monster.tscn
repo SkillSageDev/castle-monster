@@ -92,7 +92,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"attack",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -127,7 +127,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"death",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -141,7 +141,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"hurt",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -170,7 +170,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -223,7 +223,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"spell",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -252,7 +252,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dji2j"]
@@ -263,7 +263,8 @@ height = 54.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1065161527]
 sprite_frames = SubResource("SpriteFrames_lyl53")
-animation = &"idle"
+animation = &"walk"
+frame_progress = 0.7794631
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2066344895]
 position = Vector2(36, 20)

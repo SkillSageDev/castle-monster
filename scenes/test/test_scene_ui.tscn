@@ -79,8 +79,8 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control" unique_id=167039546]
-position = Vector2(192, 576)
-scale = Vector2(4.8749986, 4.8749986)
+position = Vector2(96, 328)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_tjjxo")
 animation = &"heart"
 script = SubResource("GDScript_3sr8u")
@@ -91,9 +91,10 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 24.0
-offset_top = -136.0
-offset_right = 136.0
-offset_bottom = -24.0
+offset_left = 16.0
+offset_top = -72.0
+offset_right = 128.0
+offset_bottom = 40.0
 grow_vertical = 0
+scale = Vector2(0.5, 0.5)
 theme = SubResource("Theme_6rhlf")

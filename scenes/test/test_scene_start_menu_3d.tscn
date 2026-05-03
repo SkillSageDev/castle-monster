@@ -72,10 +72,10 @@ text = "QUIT"
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1425314723]
 layout_mode = 0
-offset_left = 696.0
-offset_top = -56.0
-offset_right = 1208.0
-offset_bottom = 456.0
+offset_left = 288.0
+offset_top = -128.0
+offset_right = 800.0
+offset_bottom = 384.0
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=702676403]
 transparent_bg = true
@@ -86,24 +86,22 @@ render_target_update_mode = 4
 environment = SubResource("Environment_ljr2e")
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport" unique_id=1475702955]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -6.443445, 7.060919, 0)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5, 3.5, 0)
 current = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport" unique_id=760814682]
 transform = Transform3D(-0.9975151, 0, -0.07045284, 0, 1, 0, 0.07045284, 0, -0.9975151, 0.1731329, 9.191898, 0)
 
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport" unique_id=1433633500]
-transform = Transform3D(-0.9975151, 0, -0.07045284, 0, 1, 0, 0.07045284, 0, -0.9975151, 0.1731329, 9.191898, 0)
-
 [node name="Sketchfab_Scene" parent="SubViewportContainer/SubViewport" unique_id=1785190104 instance=ExtResource("1_m5y0i")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 script = ExtResource("2_iwxrf")
 
 [node name="SubViewportContainer2" type="SubViewportContainer" parent="." unique_id=1037544390]
 layout_mode = 0
-offset_left = -80.0
-offset_top = -56.0
-offset_right = 432.0
-offset_bottom = 456.0
+offset_left = -160.0
+offset_top = -128.0
+offset_right = 352.0
+offset_bottom = 384.0
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer2" unique_id=452542460]
 transparent_bg = true
@@ -114,15 +112,12 @@ render_target_update_mode = 4
 environment = SubResource("Environment_ljr2e")
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer2/SubViewport" unique_id=697282141]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -6.443445, 7.060919, -9.587718)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5, 3.5, -9.588)
 current = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer2/SubViewport" unique_id=450374035]
-transform = Transform3D(-0.99751514, 0, -0.070452854, 0, 1, 0, 0.07045285, 0, -0.99751514, 0.1731329, 9.191898, -9.587718)
-
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="SubViewportContainer2/SubViewport" unique_id=2012229934]
-transform = Transform3D(-0.99751514, 0, -0.070452854, 0, 1, 0, 0.07045285, 0, -0.99751514, 0.1731329, 9.191898, -9.587718)
+transform = Transform3D(-0.9975151, 0, -0.07045284, 0, 1, 0, 0.07045284, 0, -0.9975151, 0.1731329, 9.191898, -9.587718)
 
 [node name="Sketchfab_Scene" parent="SubViewportContainer2/SubViewport" unique_id=738543490 instance=ExtResource("1_m5y0i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.587718)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, -9.587718)
 script = ExtResource("2_iwxrf")

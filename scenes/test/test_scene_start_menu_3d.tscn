@@ -2,6 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://deyjpiakrxdkb" path="res://themes/title_theme.tres" id="1_2s6tm"]
 [ext_resource type="PackedScene" uid="uid://8o3gjgbud33w" path="res://assets/lion_eyes.glb" id="1_m5y0i"]
+[ext_resource type="Script" uid="uid://cr7yjui1tut8f" path="res://scripts/start_menu.gd" id="1_wjkd1"]
 [ext_resource type="Script" uid="uid://cxqmnmqgwo3x5" path="res://scripts/lion_eyes.gd" id="2_iwxrf"]
 [ext_resource type="Theme" uid="uid://btf11hucsyyw6" path="res://themes/button_theme.tres" id="2_m5y0i"]
 
@@ -25,6 +26,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_wjkd1")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1126683032]
 layout_mode = 1
@@ -121,3 +123,5 @@ transform = Transform3D(-0.9975151, 0, -0.07045284, 0, 1, 0, 0.07045284, 0, -0.9
 [node name="Sketchfab_Scene" parent="SubViewportContainer2/SubViewport" unique_id=738543490 instance=ExtResource("1_m5y0i")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, -9.587718)
 script = ExtResource("2_iwxrf")
+
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]

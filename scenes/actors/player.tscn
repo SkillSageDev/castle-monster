@@ -2,6 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://dxcn2iqgccd1l" path="res://assets/player.png" id="1_15tap"]
 [ext_resource type="Script" uid="uid://bixgg6w70jxv5" path="res://scripts/actors/player.gd" id="1_ru62r"]
+[ext_resource type="AudioStream" uid="uid://c77nmw4cln46x" path="res://audio/grass_step.wav" id="3_ktjr4"]
+[ext_resource type="AudioStream" uid="uid://dla1hrv5tosfb" path="res://audio/player_death.wav" id="4_7wueq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ru62r"]
 atlas = ExtResource("1_15tap")
@@ -75,7 +77,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7wueq")
 }],
-"loop": true,
+"loop": false,
 "name": &"die",
 "speed": 5.0
 }, {
@@ -141,3 +143,13 @@ animation = &"idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2124061123]
 position = Vector2(1, 8)
 shape = SubResource("CapsuleShape2D_t62v4")
+
+[node name="Sounds" type="Node" parent="." unique_id=1615326382]
+
+[node name="sfx_walk" type="AudioStreamPlayer2D" parent="Sounds" unique_id=1032328592]
+stream = ExtResource("3_ktjr4")
+volume_db = 10.0
+
+[node name="sfx_death" type="AudioStreamPlayer2D" parent="Sounds" unique_id=1466479425]
+stream = ExtResource("4_7wueq")
+volume_db = 16.0

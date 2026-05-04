@@ -5,6 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://dr7ew8vb8tl8t" path="res://assets/Knight 2D Pixel Art/Sprites/without_outline/IDLE.png" id="3_nxgeq"]
 [ext_resource type="Texture2D" uid="uid://cxpv57nr0d18h" path="res://assets/Knight 2D Pixel Art/Sprites/without_outline/RUN.png" id="4_tj5mn"]
 [ext_resource type="Texture2D" uid="uid://cfsyxqedyt3xk" path="res://assets/Knight 2D Pixel Art/Sprites/without_outline/WALK.png" id="5_a3bhp"]
+[ext_resource type="AudioStream" uid="uid://c77nmw4cln46x" path="res://audio/grass_step.wav" id="6_tj5mn"]
+[ext_resource type="AudioStream" uid="uid://crd34qkhr0bt3" path="res://audio/knight_death.wav" id="7_a3bhp"]
+[ext_resource type="AudioStream" uid="uid://v88jv42ue82x" path="res://audio/sword_slash.wav" id="8_e4jq0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e4jq0"]
 atlas = ExtResource("1_w4urv")
@@ -336,3 +339,17 @@ position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_1o18r")
 
 [node name="state_machine" type="Node" parent="." unique_id=1834032074]
+
+[node name="Sounds" type="Node" parent="." unique_id=1317979987]
+
+[node name="sfx_walk" type="AudioStreamPlayer" parent="Sounds" unique_id=1824260159]
+stream = ExtResource("6_tj5mn")
+volume_db = 10.0
+
+[node name="sfx_death" type="AudioStreamPlayer" parent="Sounds" unique_id=109099452]
+stream = ExtResource("7_a3bhp")
+volume_db = 10.0
+
+[node name="sfx_attack" type="AudioStreamPlayer" parent="Sounds" unique_id=335906659]
+stream = ExtResource("8_e4jq0")
+volume_db = 10.0

@@ -56,6 +56,9 @@
 [ext_resource type="Texture2D" uid="uid://dhsayp6il2mwg" path="res://assets/Bringer-Of-Death/Individual Sprite/Walk/Bringer-of-Death_Walk_7.png" id="54_ofabs"]
 [ext_resource type="Texture2D" uid="uid://dys7vsaxhsj12" path="res://assets/Bringer-Of-Death/Individual Sprite/Walk/Bringer-of-Death_Walk_8.png" id="55_bbtnp"]
 [ext_resource type="Script" uid="uid://bcfqj5q37lvse" path="res://scripts/state_machine/state_machine.gd" id="56_2dj8c"]
+[ext_resource type="AudioStream" uid="uid://v88jv42ue82x" path="res://audio/sword_slash.wav" id="57_vel84"]
+[ext_resource type="AudioStream" uid="uid://7ub3pqggg1pm" path="res://audio/monster_death.wav" id="58_clgu6"]
+[ext_resource type="AudioStream" uid="uid://c77nmw4cln46x" path="res://audio/grass_step.wav" id="59_2srv1"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lyl53"]
 animations = [{
@@ -264,7 +267,7 @@ height = 54.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1065161527]
 sprite_frames = SubResource("SpriteFrames_lyl53")
 animation = &"walk"
-frame_progress = 0.7794631
+frame_progress = 0.24060878
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2066344895]
 position = Vector2(36, 20)
@@ -272,3 +275,17 @@ shape = SubResource("CapsuleShape2D_dji2j")
 
 [node name="state_machine" type="Node" parent="." unique_id=2102409271]
 script = ExtResource("56_2dj8c")
+
+[node name="Sounds" type="Node" parent="." unique_id=1859337516]
+
+[node name="sfx_attack" type="AudioStreamPlayer" parent="Sounds" unique_id=948007392]
+stream = ExtResource("57_vel84")
+volume_db = 10.0
+
+[node name="sfx_death" type="AudioStreamPlayer" parent="Sounds" unique_id=19259663]
+stream = ExtResource("58_clgu6")
+volume_db = 10.0
+
+[node name="sfx_walk" type="AudioStreamPlayer" parent="Sounds" unique_id=659179313]
+stream = ExtResource("59_2srv1")
+volume_db = 10.0

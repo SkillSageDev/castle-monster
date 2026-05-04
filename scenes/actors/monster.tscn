@@ -58,7 +58,6 @@
 [ext_resource type="Script" uid="uid://bcfqj5q37lvse" path="res://scripts/state_machine/state_machine.gd" id="56_2dj8c"]
 [ext_resource type="AudioStream" uid="uid://v88jv42ue82x" path="res://audio/sword_slash.wav" id="57_vel84"]
 [ext_resource type="AudioStream" uid="uid://7ub3pqggg1pm" path="res://audio/monster_death.wav" id="58_clgu6"]
-[ext_resource type="AudioStream" uid="uid://c77nmw4cln46x" path="res://audio/grass_step.wav" id="59_2srv1"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lyl53"]
 animations = [{
@@ -262,12 +261,24 @@ animations = [{
 radius = 8.0
 height = 54.0
 
+[sub_resource type="Animation" id="Animation_gmwby"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_vel84"]
+resource_name = "walk"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_clgu6"]
+_data = {
+&"RESET": SubResource("Animation_gmwby"),
+&"walk": SubResource("Animation_vel84")
+}
+
 [node name="Monster" type="CharacterBody2D" unique_id=864914873]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1065161527]
 sprite_frames = SubResource("SpriteFrames_lyl53")
 animation = &"walk"
-frame_progress = 0.24060878
+frame_progress = 0.40439546
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2066344895]
 position = Vector2(36, 20)
@@ -278,14 +289,13 @@ script = ExtResource("56_2dj8c")
 
 [node name="Sounds" type="Node" parent="." unique_id=1859337516]
 
-[node name="sfx_attack" type="AudioStreamPlayer" parent="Sounds" unique_id=948007392]
+[node name="sfx_attack" type="AudioStreamPlayer2D" parent="Sounds" unique_id=669057277]
 stream = ExtResource("57_vel84")
 volume_db = 10.0
 
-[node name="sfx_death" type="AudioStreamPlayer" parent="Sounds" unique_id=19259663]
+[node name="sfx_death" type="AudioStreamPlayer2D" parent="Sounds" unique_id=1797488225]
 stream = ExtResource("58_clgu6")
 volume_db = 10.0
 
-[node name="sfx_walk" type="AudioStreamPlayer" parent="Sounds" unique_id=659179313]
-stream = ExtResource("59_2srv1")
-volume_db = 10.0
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1959622797]
+libraries/ = SubResource("AnimationLibrary_clgu6")

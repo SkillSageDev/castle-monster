@@ -567,7 +567,7 @@ radius = 21.213203
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1861708552]
 sprite_frames = SubResource("SpriteFrames_fcqu7")
-animation = &"attack"
+animation = &"idle"
 frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=320328802]
@@ -591,6 +591,7 @@ volume_db = 10.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=763927147]
 libraries/ = SubResource("AnimationLibrary_h3b88")
+autoplay = &"idle"
 speed_scale = 0.8
 
 [node name="attack" type="Area2D" parent="." unique_id=844526139]

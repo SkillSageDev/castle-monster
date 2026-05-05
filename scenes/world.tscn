@@ -1,3 +1,22 @@
 [gd_scene format=3 uid="uid://cas2ouodd3lyi"]
 
+[ext_resource type="PackedScene" uid="uid://cslhwqr4ctu2t" path="res://scenes/actors/player.tscn" id="1_4wyf3"]
+[ext_resource type="PackedScene" uid="uid://dldaftp3o00hl" path="res://scenes/actors/knight.tscn" id="2_k0juu"]
+[ext_resource type="PackedScene" uid="uid://d225cvukvqple" path="res://scenes/actors/monster.tscn" id="3_71j4m"]
+
 [node name="World" type="Node2D" unique_id=1498989114]
+
+[node name="Player" parent="." unique_id=2044208380 instance=ExtResource("1_4wyf3")]
+position = Vector2(-106, 16)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1998467444]
+position = Vector2(106, -16)
+zoom = Vector2(2, 2)
+
+[node name="AudioListener2D" type="AudioListener2D" parent="Player/Camera2D" unique_id=816197519]
+
+[node name="Knight" parent="." unique_id=1605493984 instance=ExtResource("2_k0juu")]
+position = Vector2(237, 53)
+
+[node name="Monster" parent="." unique_id=864914873 instance=ExtResource("3_71j4m")]
+position = Vector2(222, 110)

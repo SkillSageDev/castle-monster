@@ -368,7 +368,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("attack/CollisionShape2D:disabled")
+tracks/3/path = NodePath("Attack/CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -420,7 +420,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("attack/CollisionShape2D:disabled")
+tracks/3/path = NodePath("Attack/CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -574,7 +574,7 @@ frame = 1
 position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_1o18r")
 
-[node name="state_machine" type="Node" parent="." unique_id=1834032074]
+[node name="StateMachine" type="Node" parent="." unique_id=1834032074]
 
 [node name="Sounds" type="Node" parent="." unique_id=1317979987]
 
@@ -594,8 +594,8 @@ libraries/ = SubResource("AnimationLibrary_h3b88")
 autoplay = &"idle"
 speed_scale = 0.8
 
-[node name="attack" type="Area2D" parent="." unique_id=844526139]
+[node name="Attack" type="Area2D" parent="." unique_id=844526139]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="attack" unique_id=523644468]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack" unique_id=523644468]
 position = Vector2(10, -2)
 shape = SubResource("CircleShape2D_tj5mn")

@@ -24,4 +24,4 @@ func physics_update(_delta: float):
 
 # You Will Inherit you're states from this code
 
-# to change state ex: from idle to walk then: in idle code Transitioned.emit(self,walk)
+# to change state ex: from idle to walk then: in idle code transitioned.emit(self,walk)

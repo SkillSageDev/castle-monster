@@ -55,8 +55,12 @@
 [ext_resource type="Texture2D" uid="uid://cb1iing2g4rjk" path="res://assets/Bringer-Of-Death/Individual Sprite/Walk/Bringer-of-Death_Walk_6.png" id="53_dtjki"]
 [ext_resource type="Texture2D" uid="uid://dhsayp6il2mwg" path="res://assets/Bringer-Of-Death/Individual Sprite/Walk/Bringer-of-Death_Walk_7.png" id="54_ofabs"]
 [ext_resource type="Texture2D" uid="uid://dys7vsaxhsj12" path="res://assets/Bringer-Of-Death/Individual Sprite/Walk/Bringer-of-Death_Walk_8.png" id="55_bbtnp"]
+[ext_resource type="Script" uid="uid://bcfqj5q37lvse" path="res://scripts/state_machine/state_machine.gd" id="56_vel84"]
+[ext_resource type="Script" uid="uid://tm1cj18rsdkn" path="res://scripts/actors/monster/idle.gd" id="57_clgu6"]
 [ext_resource type="AudioStream" uid="uid://v88jv42ue82x" path="res://audio/sword_slash.wav" id="57_vel84"]
+[ext_resource type="Script" uid="uid://ce0asoss55k3p" path="res://scripts/actors/monster/walk.gd" id="58_2srv1"]
 [ext_resource type="AudioStream" uid="uid://7ub3pqggg1pm" path="res://audio/monster_death.wav" id="58_clgu6"]
+[ext_resource type="Script" uid="uid://h16gbrqh10ib" path="res://scripts/actors/monster/chase.gd" id="59_2srv1"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lyl53"]
 animations = [{
@@ -256,6 +260,12 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_f5jsf"]
+radius = 35.00357
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gmwby"]
+radius = 72.00694
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dji2j"]
 radius = 8.0
 height = 54.0
@@ -265,7 +275,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/path = NodePath("FlipContainer/AnimatedSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -277,7 +287,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Attack/CollisionShape2D:disabled")
+tracks/1/path = NodePath("FlipContainer/Attack/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -293,7 +303,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/path = NodePath("FlipContainer/AnimatedSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -317,7 +327,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("AnimatedSprite2D:animation")
+tracks/2/path = NodePath("FlipContainer/AnimatedSprite2D:animation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -329,7 +339,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Attack/CollisionShape2D:disabled")
+tracks/3/path = NodePath("FlipContainer/Attack/CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -345,7 +355,7 @@ length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/path = NodePath("FlipContainer/AnimatedSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -357,7 +367,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/path = NodePath("FlipContainer/AnimatedSprite2D:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -385,7 +395,7 @@ length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/path = NodePath("FlipContainer/AnimatedSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -397,7 +407,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/path = NodePath("FlipContainer/AnimatedSprite2D:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -414,7 +424,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/path = NodePath("FlipContainer/AnimatedSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -426,7 +436,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/path = NodePath("FlipContainer/AnimatedSprite2D:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -443,7 +453,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/path = NodePath("FlipContainer/AnimatedSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -455,7 +465,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/path = NodePath("FlipContainer/AnimatedSprite2D:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -475,26 +485,48 @@ _data = {
 &"walk": SubResource("Animation_ei1m1")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_f5jsf"]
-radius = 35.00357
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_gmwby"]
-radius = 72.00694
-
 [node name="Monster" type="CharacterBody2D" unique_id=864914873]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1065161527]
+[node name="FlipContainer" type="Node2D" parent="." unique_id=583559451]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="FlipContainer" unique_id=1065161527]
 sprite_frames = SubResource("SpriteFrames_lyl53")
 animation = &"idle"
 frame = 1
+
+[node name="Attack" type="Area2D" parent="FlipContainer" unique_id=1675881845]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlipContainer/Attack" unique_id=253810822]
+position = Vector2(-33, 12)
+shape = SubResource("CircleShape2D_f5jsf")
+disabled = true
+
+[node name="Vision" type="Area2D" parent="FlipContainer" unique_id=1535499648]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlipContainer/Vision" unique_id=716489411]
+shape = SubResource("CircleShape2D_gmwby")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2066344895]
 position = Vector2(36, 20)
 shape = SubResource("CapsuleShape2D_dji2j")
 
-[node name="StateMachine" type="Node" parent="." unique_id=2102409271]
+[node name="StateMachine" type="Node" parent="." unique_id=2102409271 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("56_vel84")
+initial_state = NodePath("Idle")
 
 [node name="Death" type="Node" parent="StateMachine" unique_id=917607928]
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=750421453 node_paths=PackedStringArray("walk_state")]
+script = ExtResource("57_clgu6")
+walk_state = NodePath("../Walk")
+
+[node name="Walk" type="Node" parent="StateMachine" unique_id=157019118]
+script = ExtResource("58_2srv1")
+
+[node name="Chase" type="Node" parent="StateMachine" unique_id=861854251]
+script = ExtResource("59_2srv1")
+
+[node name="Attack" type="Node" parent="StateMachine" unique_id=1692015487]
 
 [node name="Sounds" type="Node" parent="." unique_id=1859337516]
 
@@ -511,14 +543,4 @@ libraries/ = SubResource("AnimationLibrary_sobhg")
 autoplay = &"idle"
 speed_scale = 0.8
 
-[node name="Attack" type="Area2D" parent="." unique_id=1675881845]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack" unique_id=253810822]
-position = Vector2(-33, 12)
-shape = SubResource("CircleShape2D_f5jsf")
-disabled = true
-
-[node name="Vision" type="Area2D" parent="." unique_id=1535499648]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vision" unique_id=716489411]
-shape = SubResource("CircleShape2D_gmwby")
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1786562946]

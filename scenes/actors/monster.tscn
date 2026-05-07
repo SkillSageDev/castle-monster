@@ -573,6 +573,7 @@ speed_scale = 0.8
 wait_time = 10.0
 one_shot = true
 
+[connection signal="body_entered" from="FlipContainer/Vision" to="StateMachine/Idle" method="_on_vision_body_entered"]
 [connection signal="body_entered" from="FlipContainer/Vision" to="StateMachine/Walk" method="_on_vision_body_entered"]
 [connection signal="body_entered" from="FlipContainer/Vision" to="StateMachine/Chase" method="_on_vision_body_entered"]
 [connection signal="body_exited" from="FlipContainer/Vision" to="StateMachine/Chase" method="_on_vision_body_exited"]

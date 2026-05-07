@@ -34,6 +34,7 @@ func physics_update(_delta: float):
     if nav_mesh_agent_2d.is_navigation_finished():
         if is_active == true:
             monster_character_body_2d.velocity = Vector2.ZERO
+            chase_time.stop()
             transitioned.emit(self,attack_state.name)
             return
 
@@ -46,6 +47,7 @@ func physics_update(_delta: float):
 func update(_delta: float):
     
     if Global.monster_health ==0:
+        chase_time.stop()
         transitioned.emit(self,death_state.name)
 
     var dist_to_target = player.global_position.distance_to(nav_mesh_agent_2d.target_position)

@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://d225cvukvqple"]
 
+[ext_resource type="Script" uid="uid://du8fmxnxkvjcb" path="res://scripts/actors/monster/monster.gd" id="1_sobhg"]
 [ext_resource type="Texture2D" uid="uid://etqjugrme3c2" path="res://assets/Bringer-Of-Death/Individual Sprite/Attack/Bringer-of-Death_Attack_1.png" id="1_wpl3m"]
 [ext_resource type="Texture2D" uid="uid://daqrjc85xohci" path="res://assets/Bringer-Of-Death/Individual Sprite/Attack/Bringer-of-Death_Attack_2.png" id="2_2dj8c"]
 [ext_resource type="Texture2D" uid="uid://cucjuan8deoi7" path="res://assets/Bringer-Of-Death/Individual Sprite/Attack/Bringer-of-Death_Attack_3.png" id="3_no3b1"]
@@ -57,10 +58,12 @@
 [ext_resource type="Texture2D" uid="uid://dys7vsaxhsj12" path="res://assets/Bringer-Of-Death/Individual Sprite/Walk/Bringer-of-Death_Walk_8.png" id="55_bbtnp"]
 [ext_resource type="Script" uid="uid://bcfqj5q37lvse" path="res://scripts/state_machine/state_machine.gd" id="56_vel84"]
 [ext_resource type="Script" uid="uid://tm1cj18rsdkn" path="res://scripts/actors/monster/idle.gd" id="57_clgu6"]
+[ext_resource type="Script" uid="uid://vcgsct84rs7d" path="res://scripts/actors/monster/death.gd" id="57_ei1m1"]
 [ext_resource type="AudioStream" uid="uid://v88jv42ue82x" path="res://audio/sword_slash.wav" id="57_vel84"]
 [ext_resource type="Script" uid="uid://ce0asoss55k3p" path="res://scripts/actors/monster/walk.gd" id="58_2srv1"]
 [ext_resource type="AudioStream" uid="uid://7ub3pqggg1pm" path="res://audio/monster_death.wav" id="58_clgu6"]
 [ext_resource type="Script" uid="uid://h16gbrqh10ib" path="res://scripts/actors/monster/chase.gd" id="59_2srv1"]
+[ext_resource type="Script" uid="uid://dgxqap80e4ejp" path="res://scripts/actors/monster/attack.gd" id="60_nklw8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lyl53"]
 animations = [{
@@ -261,10 +264,13 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f5jsf"]
-radius = 35.00357
+radius = 54.147945
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gmwby"]
 radius = 72.00694
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ei1m1"]
+radius = 51.009804
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dji2j"]
 radius = 8.0
@@ -486,25 +492,35 @@ _data = {
 }
 
 [node name="Monster" type="CharacterBody2D" unique_id=864914873]
+script = ExtResource("1_sobhg")
 
 [node name="FlipContainer" type="Node2D" parent="." unique_id=583559451]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="FlipContainer" unique_id=1065161527]
 sprite_frames = SubResource("SpriteFrames_lyl53")
-animation = &"idle"
+animation = &"attack"
 frame = 1
 
 [node name="Attack" type="Area2D" parent="FlipContainer" unique_id=1675881845]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FlipContainer/Attack" unique_id=253810822]
-position = Vector2(-33, 12)
+position = Vector2(-17, 8)
 shape = SubResource("CircleShape2D_f5jsf")
 disabled = true
+debug_color = Color(0.9077852, 0.2923786, 0.3187171, 0.41960785)
 
 [node name="Vision" type="Area2D" parent="FlipContainer" unique_id=1535499648]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FlipContainer/Vision" unique_id=716489411]
 shape = SubResource("CircleShape2D_gmwby")
+debug_color = Color(9.1448425e-07, 0.6476285, 0.21429384, 0.41960785)
+
+[node name="AttackVision" type="Area2D" parent="FlipContainer" unique_id=1655701037]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlipContainer/AttackVision" unique_id=1478096877]
+position = Vector2(-17, 7)
+shape = SubResource("CircleShape2D_ei1m1")
+debug_color = Color(0.66699606, 0.50741726, 0.17695138, 0.41960785)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2066344895]
 position = Vector2(36, 20)
@@ -515,18 +531,26 @@ script = ExtResource("56_vel84")
 initial_state = NodePath("Idle")
 
 [node name="Death" type="Node" parent="StateMachine" unique_id=917607928]
+script = ExtResource("57_ei1m1")
 
-[node name="Idle" type="Node" parent="StateMachine" unique_id=750421453 node_paths=PackedStringArray("walk_state")]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=750421453 node_paths=PackedStringArray("walk_state", "death_state")]
 script = ExtResource("57_clgu6")
 walk_state = NodePath("../Walk")
+death_state = NodePath("../Death")
 
-[node name="Walk" type="Node" parent="StateMachine" unique_id=157019118]
+[node name="Walk" type="Node" parent="StateMachine" unique_id=157019118 node_paths=PackedStringArray("idle_state", "chase_state")]
 script = ExtResource("58_2srv1")
+idle_state = NodePath("../Idle")
+chase_state = NodePath("../Chase")
 
-[node name="Chase" type="Node" parent="StateMachine" unique_id=861854251]
+[node name="Chase" type="Node" parent="StateMachine" unique_id=861854251 node_paths=PackedStringArray("attack_state", "walk_state")]
 script = ExtResource("59_2srv1")
+attack_state = NodePath("../Attack")
+walk_state = NodePath("../Walk")
 
-[node name="Attack" type="Node" parent="StateMachine" unique_id=1692015487]
+[node name="Attack" type="Node" parent="StateMachine" unique_id=1692015487 node_paths=PackedStringArray("chase_state")]
+script = ExtResource("60_nklw8")
+chase_state = NodePath("../Chase")
 
 [node name="Sounds" type="Node" parent="." unique_id=1859337516]
 
@@ -544,3 +568,13 @@ autoplay = &"idle"
 speed_scale = 0.8
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1786562946]
+
+[node name="ChaseTime" type="Timer" parent="." unique_id=149263878]
+wait_time = 10.0
+one_shot = true
+
+[connection signal="body_entered" from="FlipContainer/Vision" to="StateMachine/Walk" method="_on_vision_body_entered"]
+[connection signal="body_entered" from="FlipContainer/Vision" to="StateMachine/Chase" method="_on_vision_body_entered"]
+[connection signal="body_exited" from="FlipContainer/Vision" to="StateMachine/Chase" method="_on_vision_body_exited"]
+[connection signal="body_exited" from="FlipContainer/AttackVision" to="StateMachine/Attack" method="_on_attack_vision_body_exited"]
+[connection signal="timeout" from="ChaseTime" to="StateMachine/Chase" method="_on_chase_time_timeout"]

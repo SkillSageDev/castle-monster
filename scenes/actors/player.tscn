@@ -132,7 +132,7 @@ animations = [{
 radius = 5.0
 height = 18.0
 
-[node name="Player" type="CharacterBody2D" unique_id=2044208380]
+[node name="Player" type="CharacterBody2D" unique_id=2044208380 groups=["player"]]
 script = ExtResource("1_ru62r")
 sprint_speed = 200.0
 

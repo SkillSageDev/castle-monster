@@ -2,7 +2,7 @@ extends State
 
 @export var min_distance = 40
 @export var max_distance = 100
-@export var speed = 100
+@export var speed = 50
 @export var idle_state: State
 @export var chase_state: State
 @export var death_state: State

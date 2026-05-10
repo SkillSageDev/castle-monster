@@ -2,7 +2,7 @@ extends State
 
 @export var min_distance = 3
 @export var max_distance = 5
-@export var speed = 190
+@export var speed = 100
 @export var attack_state: State
 @export var walk_state: State
 @export var death_state: State
@@ -21,6 +21,7 @@ func enter():
     is_active = true
     player = get_tree().get_first_node_in_group("player")
     set_random_target()
+    animation_player.play('walk')
 
 
 func exit():
@@ -81,4 +82,10 @@ func _on_vision_body_entered(body: Node2D) -> void:
 
 
 func _on_chase_time_timeout() -> void:
-    transitioned.emit(self,attack_state.name)
+    transitioned.emit(self,walk_state.name)
+
+
+func _on_attack_vision_body_entered(body: Node2D) -> void:
+     if is_active and body.is_in_group('player'):
+        chase_time.stop()
+        transitioned.emit(self,attack_state.name)

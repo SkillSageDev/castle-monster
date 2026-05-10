@@ -267,10 +267,10 @@ animations = [{
 radius = 54.147945
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gmwby"]
-radius = 72.00694
+radius = 70.178345
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ei1m1"]
-radius = 51.009804
+radius = 56.0357
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dji2j"]
 radius = 8.0
@@ -497,14 +497,16 @@ script = ExtResource("1_sobhg")
 [node name="FlipContainer" type="Node2D" parent="." unique_id=583559451]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="FlipContainer" unique_id=1065161527]
+position = Vector2(36, -19)
 sprite_frames = SubResource("SpriteFrames_lyl53")
-animation = &"attack"
+animation = &"idle"
 frame = 1
+flip_h = true
 
 [node name="Attack" type="Area2D" parent="FlipContainer" unique_id=1675881845]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FlipContainer/Attack" unique_id=253810822]
-position = Vector2(-17, 8)
+position = Vector2(54, 0)
 shape = SubResource("CircleShape2D_f5jsf")
 disabled = true
 debug_color = Color(0.9077852, 0.2923786, 0.3187171, 0.41960785)
@@ -512,18 +514,18 @@ debug_color = Color(0.9077852, 0.2923786, 0.3187171, 0.41960785)
 [node name="Vision" type="Area2D" parent="FlipContainer" unique_id=1535499648]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FlipContainer/Vision" unique_id=716489411]
+position = Vector2(16, 0)
 shape = SubResource("CircleShape2D_gmwby")
 debug_color = Color(9.1448425e-07, 0.6476285, 0.21429384, 0.41960785)
 
 [node name="AttackVision" type="Area2D" parent="FlipContainer" unique_id=1655701037]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FlipContainer/AttackVision" unique_id=1478096877]
-position = Vector2(-17, 7)
+position = Vector2(54, 0)
 shape = SubResource("CircleShape2D_ei1m1")
 debug_color = Color(0.66699606, 0.50741726, 0.17695138, 0.41960785)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2066344895]
-position = Vector2(36, 20)
 shape = SubResource("CapsuleShape2D_dji2j")
 
 [node name="StateMachine" type="Node" parent="." unique_id=2102409271 node_paths=PackedStringArray("initial_state")]
@@ -533,24 +535,28 @@ initial_state = NodePath("Idle")
 [node name="Death" type="Node" parent="StateMachine" unique_id=917607928]
 script = ExtResource("57_ei1m1")
 
-[node name="Idle" type="Node" parent="StateMachine" unique_id=750421453 node_paths=PackedStringArray("walk_state", "death_state")]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=750421453 node_paths=PackedStringArray("walk_state", "chase_state", "death_state")]
 script = ExtResource("57_clgu6")
 walk_state = NodePath("../Walk")
+chase_state = NodePath("../Chase")
 death_state = NodePath("../Death")
 
-[node name="Walk" type="Node" parent="StateMachine" unique_id=157019118 node_paths=PackedStringArray("idle_state", "chase_state")]
+[node name="Walk" type="Node" parent="StateMachine" unique_id=157019118 node_paths=PackedStringArray("idle_state", "chase_state", "death_state")]
 script = ExtResource("58_2srv1")
 idle_state = NodePath("../Idle")
 chase_state = NodePath("../Chase")
+death_state = NodePath("../Death")
 
-[node name="Chase" type="Node" parent="StateMachine" unique_id=861854251 node_paths=PackedStringArray("attack_state", "walk_state")]
+[node name="Chase" type="Node" parent="StateMachine" unique_id=861854251 node_paths=PackedStringArray("attack_state", "walk_state", "death_state")]
 script = ExtResource("59_2srv1")
 attack_state = NodePath("../Attack")
 walk_state = NodePath("../Walk")
+death_state = NodePath("../Death")
 
-[node name="Attack" type="Node" parent="StateMachine" unique_id=1692015487 node_paths=PackedStringArray("chase_state")]
+[node name="Attack" type="Node" parent="StateMachine" unique_id=1692015487 node_paths=PackedStringArray("chase_state", "death_state")]
 script = ExtResource("60_nklw8")
 chase_state = NodePath("../Chase")
+death_state = NodePath("../Death")
 
 [node name="Sounds" type="Node" parent="." unique_id=1859337516]
 
@@ -573,9 +579,11 @@ speed_scale = 0.8
 wait_time = 10.0
 one_shot = true
 
+[connection signal="body_entered" from="FlipContainer/Attack" to="StateMachine/Attack" method="_on_attack_body_entered"]
 [connection signal="body_entered" from="FlipContainer/Vision" to="StateMachine/Idle" method="_on_vision_body_entered"]
 [connection signal="body_entered" from="FlipContainer/Vision" to="StateMachine/Walk" method="_on_vision_body_entered"]
 [connection signal="body_entered" from="FlipContainer/Vision" to="StateMachine/Chase" method="_on_vision_body_entered"]
 [connection signal="body_exited" from="FlipContainer/Vision" to="StateMachine/Chase" method="_on_vision_body_exited"]
+[connection signal="body_entered" from="FlipContainer/AttackVision" to="StateMachine/Chase" method="_on_attack_vision_body_entered"]
 [connection signal="body_exited" from="FlipContainer/AttackVision" to="StateMachine/Attack" method="_on_attack_vision_body_exited"]
 [connection signal="timeout" from="ChaseTime" to="StateMachine/Chase" method="_on_chase_time_timeout"]

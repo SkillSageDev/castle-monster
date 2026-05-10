@@ -28,3 +28,11 @@ func update(_delta: float):
 func _on_attack_vision_body_exited(body: Node2D) -> void:
 	if is_active == true:
 		transitioned.emit(self,chase_state.name)
+
+
+func _on_attack_body_entered(body: Node2D) -> void:
+	if is_active and body.is_in_group('player'):
+		Global.player_health = Global.player_health -1
+		print(Global.player_health)
+
+

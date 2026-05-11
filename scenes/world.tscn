@@ -17,7 +17,7 @@ size = Vector2(26, 72)
 [node name="World" type="Node2D" unique_id=1498989114]
 script = ExtResource("1_71j4m")
 
-[node name="TestScenePlayer" parent="." unique_id=1416436746 instance=ExtResource("1_k0juu")]
+[node name="HorrorMap" parent="." unique_id=1416436746 instance=ExtResource("1_k0juu")]
 position = Vector2(75, 22)
 
 [node name="Player" parent="." unique_id=2044208380 instance=ExtResource("1_4wyf3")]

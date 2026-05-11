@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://cycfb7dly4wmc" path="res://tilesets/game_tile_set.tres" id="1_d6mpp"]
 
-[node name="TestScenePlayer" type="Node2D" unique_id=1416436746]
+[node name="HorrorMap" type="Node2D" unique_id=1416436746]
 
 [node name="Terrain" type="Node2D" parent="." unique_id=104207078]
 

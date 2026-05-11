@@ -18,45 +18,40 @@ size = Vector2(26, 72)
 script = ExtResource("1_71j4m")
 
 [node name="HorrorMap" parent="." unique_id=1416436746 instance=ExtResource("1_k0juu")]
-position = Vector2(75, 22)
 
-[node name="Player" parent="." unique_id=2044208380 instance=ExtResource("1_4wyf3")]
-position = Vector2(263, 158)
-
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=318082446]
-position = Vector2(-263, -158)
-offset = Vector2(350, 150)
-zoom = Vector2(2, 2)
-
-[node name="AudioListener2D" type="AudioListener2D" parent="Player/Camera2D" unique_id=1595094368]
-
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=296106820]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="HorrorMap" unique_id=296106820]
+position = Vector2(-75, -22)
 navigation_polygon = SubResource("NavigationPolygon_71j4m")
 
-[node name="Monster" parent="NavigationRegion2D" unique_id=864914873 instance=ExtResource("3_71j4m")]
-position = Vector2(384, 160)
+[node name="exit_area" type="Area2D" parent="HorrorMap" unique_id=360404094]
+position = Vector2(-75, -22)
 
-[node name="exit_area" type="Area2D" parent="." unique_id=360404094]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="exit_area" unique_id=201869854]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HorrorMap/exit_area" unique_id=201869854]
 position = Vector2(637, 188)
 shape = SubResource("RectangleShape2D_4wyf3")
 
-[node name="Coins" type="Node" parent="." unique_id=1260718185]
+[node name="Coins" type="Node2D" parent="HorrorMap" unique_id=487261518]
+position = Vector2(-75, -22)
 
-[node name="Coin" parent="Coins" unique_id=27188525 instance=ExtResource("5_71j4m")]
+[node name="Coin" parent="HorrorMap/Coins" unique_id=27188525 instance=ExtResource("5_71j4m")]
 position = Vector2(152, 304)
 
-[node name="Coin2" parent="Coins" unique_id=161502947 instance=ExtResource("5_71j4m")]
+[node name="Coin2" parent="HorrorMap/Coins" unique_id=161502947 instance=ExtResource("5_71j4m")]
 position = Vector2(576, 88)
 
-[node name="Coin3" parent="Coins" unique_id=434959875 instance=ExtResource("5_71j4m")]
+[node name="Coin3" parent="HorrorMap/Coins" unique_id=434959875 instance=ExtResource("5_71j4m")]
 position = Vector2(200, 152)
 
-[node name="Coin4" parent="Coins" unique_id=941663945 instance=ExtResource("5_71j4m")]
+[node name="Coin4" parent="HorrorMap/Coins" unique_id=941663945 instance=ExtResource("5_71j4m")]
 position = Vector2(608, 272)
 
-[node name="Coin5" parent="Coins" unique_id=264936067 instance=ExtResource("5_71j4m")]
+[node name="Coin5" parent="HorrorMap/Coins" unique_id=264936067 instance=ExtResource("5_71j4m")]
 position = Vector2(288, 96)
 
-[connection signal="body_entered" from="exit_area" to="." method="_on_exit_area_body_entered"]
+[node name="Player" parent="HorrorMap" unique_id=2044208380 instance=ExtResource("1_4wyf3")]
+position = Vector2(188, 136)
+
+[node name="Monster" parent="HorrorMap" unique_id=864914873 instance=ExtResource("3_71j4m")]
+position = Vector2(309, 138)
+
+[connection signal="body_entered" from="HorrorMap/exit_area" to="." method="_on_exit_area_body_entered"]

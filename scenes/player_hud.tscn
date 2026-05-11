@@ -1,0 +1,149 @@
+[gd_scene format=3 uid="uid://dc34xyqogwbjf"]
+
+[ext_resource type="Script" uid="uid://ob1e2y4wbxrw" path="res://scripts/player_hud.gd" id="1_er5qu"]
+[ext_resource type="Texture2D" uid="uid://i6omco5tm4wi" path="res://assets/Ui/Receptacle/Heart.png" id="2_or0tx"]
+[ext_resource type="Texture2D" uid="uid://dxcn2iqgccd1l" path="res://assets/player.png" id="3_qcjqi"]
+[ext_resource type="Texture2D" uid="uid://c143usv0scorn" path="res://assets/Coin_tiles.png" id="4_or0tx"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7nqy0"]
+texture = ExtResource("3_qcjqi")
+texture_margin_left = 5.0
+texture_margin_top = 10.0
+texture_margin_right = 5.0
+expand_margin_left = 100.0
+expand_margin_top = 100.0
+expand_margin_right = 100.0
+expand_margin_bottom = 100.0
+region_rect = Rect2(0, 48, 48, 48)
+
+[sub_resource type="Theme" id="Theme_6rhlf"]
+Panel/styles/panel = SubResource("StyleBoxTexture_7nqy0")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_er5qu"]
+atlas = ExtResource("2_or0tx")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_or0tx"]
+atlas = ExtResource("2_or0tx")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcjqi"]
+atlas = ExtResource("2_or0tx")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s25gh"]
+atlas = ExtResource("2_or0tx")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujnyd"]
+atlas = ExtResource("2_or0tx")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tjjxo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_er5qu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_or0tx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qcjqi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s25gh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujnyd")
+}],
+"loop": true,
+"name": &"heart",
+"speed": 5.0
+}]
+
+[sub_resource type="AnimationRootNode" id="AnimationRootNode_or0tx"]
+
+[sub_resource type="Animation" id="Animation_qcjqi"]
+resource_name = "new_animation"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s25gh"]
+_data = {
+&"new_animation": SubResource("Animation_qcjqi")
+}
+
+[node name="PlayerHUD" type="CanvasLayer" unique_id=737009381]
+script = ExtResource("1_er5qu")
+
+[node name="Control" type="Control" parent="." unique_id=1047820190]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = 8.0
+offset_right = -16.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UI" type="Control" parent="Control" unique_id=1178038372]
+anchors_preset = 0
+offset_left = 8.0
+offset_top = 95.99999
+offset_right = 8.0
+offset_bottom = 95.99999
+scale = Vector2(0.7, 0.7)
+
+[node name="PlayerPhoto" type="Panel" parent="Control/UI" unique_id=691871406]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 295.99997
+offset_right = 144.0
+offset_bottom = 407.99997
+grow_vertical = 0
+scale = Vector2(0.4, 0.4)
+theme = SubResource("Theme_6rhlf")
+
+[node name="Heart" type="AnimatedSprite2D" parent="Control/UI" unique_id=167039546]
+position = Vector2(96, 328)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_tjjxo")
+animation = &"heart"
+
+[node name="Coins" type="Control" parent="Control/UI" unique_id=1632665736]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -32.0
+offset_right = -40.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CoinSprite" type="Sprite2D" parent="Control/UI/Coins" unique_id=520643949]
+position = Vector2(136, 328)
+scale = Vector2(2, 2)
+texture = ExtResource("4_or0tx")
+hframes = 6
+
+[node name="CoinCount" type="Label" parent="Control/UI/Coins" unique_id=1379285062]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 316.0
+offset_right = 198.0
+offset_bottom = 339.0
+text = "1"
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=991218379]
+tree_root = SubResource("AnimationRootNode_or0tx")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1189548863]
+libraries/ = SubResource("AnimationLibrary_s25gh")

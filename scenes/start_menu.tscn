@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://dsb32ghrxbwr5"]
+
+[ext_resource type="Script" uid="uid://cr7yjui1tut8f" path="res://scripts/start_menu.gd" id="1_xbcfi"]
+[ext_resource type="Theme" uid="uid://deyjpiakrxdkb" path="res://themes/title_theme.tres" id="2_7ved5"]
+[ext_resource type="Theme" uid="uid://btf11hucsyyw6" path="res://themes/button_theme.tres" id="3_is4df"]
+[ext_resource type="PackedScene" uid="uid://8o3gjgbud33w" path="res://assets/lion_eyes.glb" id="4_qmi4j"]
+[ext_resource type="Script" uid="uid://cxqmnmqgwo3x5" path="res://scripts/lion_eyes.gd" id="5_j064f"]
+
+[sub_resource type="Gradient" id="Gradient_iwxrf"]
+offsets = PackedFloat32Array(0.9752475, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w4noe"]
+gradient = SubResource("Gradient_iwxrf")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Environment" id="Environment_ljr2e"]
+ambient_light_energy = 0.0
+
+[node name="StartMenu" type="Control" unique_id=1883624502]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xbcfi")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1126683032]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_w4noe")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2009372807]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=224894038]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 80
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=305284809]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Title" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=302337762]
+layout_mode = 2
+theme = ExtResource("2_7ved5")
+text = "Castle 
+Monster"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Start" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=1417918583]
+layout_mode = 2
+theme = ExtResource("3_is4df")
+text = "START"
+
+[node name="Quit" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=987746517]
+layout_mode = 2
+theme = ExtResource("3_is4df")
+text = "QUIT"
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1425314723]
+layout_mode = 0
+offset_left = 288.0
+offset_top = -128.0
+offset_right = 800.0
+offset_bottom = 384.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=702676403]
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport" unique_id=653653210]
+environment = SubResource("Environment_ljr2e")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport" unique_id=1475702955]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5, 3.5, 0)
+current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport" unique_id=760814682]
+transform = Transform3D(-0.9975151, 0, -0.07045284, 0, 1, 0, 0.07045284, 0, -0.9975151, 0.1731329, 9.191898, 0)
+
+[node name="Sketchfab_Scene" parent="SubViewportContainer/SubViewport" unique_id=1785190104 instance=ExtResource("4_qmi4j")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+script = ExtResource("5_j064f")
+
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="." unique_id=1037544390]
+layout_mode = 0
+offset_left = -160.0
+offset_top = -128.0
+offset_right = 352.0
+offset_bottom = 384.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer2" unique_id=452542460]
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer2/SubViewport" unique_id=376620444]
+environment = SubResource("Environment_ljr2e")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer2/SubViewport" unique_id=697282141]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5, 3.5, -9.588)
+current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer2/SubViewport" unique_id=450374035]
+transform = Transform3D(-0.9975151, 0, -0.07045284, 0, 1, 0, 0.07045284, 0, -0.9975151, 0.1731329, 9.191898, -9.587718)
+
+[node name="Sketchfab_Scene" parent="SubViewportContainer2/SubViewport" unique_id=738543490 instance=ExtResource("4_qmi4j")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, -9.587718)
+script = ExtResource("5_j064f")
+
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]

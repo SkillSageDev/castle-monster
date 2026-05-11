@@ -270,7 +270,7 @@ radius = 54.147945
 radius = 70.178345
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ei1m1"]
-radius = 56.0357
+radius = 50.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dji2j"]
 radius = 8.0
@@ -576,7 +576,6 @@ speed_scale = 0.8
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1786562946]
 
 [node name="ChaseTime" type="Timer" parent="." unique_id=149263878]
-wait_time = 10.0
 one_shot = true
 
 [connection signal="body_entered" from="FlipContainer/Attack" to="StateMachine/Attack" method="_on_attack_body_entered"]

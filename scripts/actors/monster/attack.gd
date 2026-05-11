@@ -34,5 +34,3 @@ func _on_attack_body_entered(body: Node2D) -> void:
 	if is_active and body.is_in_group('player'):
 		Global.player_health = Global.player_health -1
 		print(Global.player_health)
-
-

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Castle Monster"
-run/main_scene="uid://cas2ouodd3lyi"
+run/main_scene="uid://i2r3k45gxk0t"
 config/features=PackedStringArray("4.6", "Mobile")
 
 [autoload]

@@ -1,5 +1,5 @@
 extends Control
-signal jojo
+
 @onready var quit_button = $CanvasLayer/MarginContainer/VBoxContainer/Quit
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

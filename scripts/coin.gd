@@ -1,9 +1,10 @@
 extends Area2D
 
 @onready var coin_collected:AudioStreamPlayer2D = $CoinCollected
+@onready var coin_animation : AnimatedSprite2D = $AnimatedSprite2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	coin_animation.play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

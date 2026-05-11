@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://cpemeddr2tefm"]
+
+[ext_resource type="Script" uid="uid://ddkfbr7r0w28x" path="res://scripts/win_scene.gd" id="1_lw2vd"]
+[ext_resource type="PackedScene" uid="uid://dsb32ghrxbwr5" path="res://scenes/start_menu.tscn" id="2_8w6tn"]
+[ext_resource type="Theme" uid="uid://deyjpiakrxdkb" path="res://themes/title_theme.tres" id="3_c3pwq"]
+[ext_resource type="Theme" uid="uid://btf11hucsyyw6" path="res://themes/button_theme.tres" id="4_5jhep"]
+
+[sub_resource type="Theme" id="Theme_e41g7"]
+
+[node name="LoseScene" type="CanvasLayer" unique_id=373509027]
+process_mode = 3
+script = ExtResource("1_lw2vd")
+start_menu = ExtResource("2_8w6tn")
+
+[node name="Background" type="ColorRect" parent="." unique_id=389109020]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_e41g7")
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="." unique_id=349365919]
+offset_left = 192.0
+offset_top = 64.0
+offset_right = 622.0
+offset_bottom = 129.0
+theme = ExtResource("3_c3pwq")
+text = "You Are "
+
+[node name="Label2" type="Label" parent="." unique_id=1613041654]
+offset_left = 224.0
+offset_top = 120.0
+offset_right = 712.0
+offset_bottom = 185.0
+theme = ExtResource("3_c3pwq")
+text = "DEAD"
+
+[node name="Retry" type="Button" parent="." unique_id=1616682264]
+offset_left = 160.0
+offset_top = 208.0
+offset_right = 493.0
+offset_bottom = 254.0
+theme = ExtResource("4_5jhep")
+text = "Wanna Die Again?"
+
+[node name="Back" type="Button" parent="." unique_id=159050704]
+offset_left = 160.0
+offset_top = 272.0
+offset_right = 493.0
+offset_bottom = 318.0
+theme = ExtResource("4_5jhep")
+text = "Accept Your Fate"
+
+[connection signal="pressed" from="Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

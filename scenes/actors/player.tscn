@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dxcn2iqgccd1l" path="res://assets/player.png" id="1_15tap"]
 [ext_resource type="Script" uid="uid://bixgg6w70jxv5" path="res://scripts/actors/player.gd" id="1_ru62r"]
+[ext_resource type="PackedScene" uid="uid://dc34xyqogwbjf" path="res://scenes/player_hud.tscn" id="2_oomub"]
 [ext_resource type="AudioStream" uid="uid://c77nmw4cln46x" path="res://audio/grass_step.wav" id="3_ktjr4"]
 [ext_resource type="AudioStream" uid="uid://dla1hrv5tosfb" path="res://audio/player_death.wav" id="4_7wueq"]
 
@@ -135,6 +136,8 @@ height = 18.0
 [node name="Player" type="CharacterBody2D" unique_id=2044208380 groups=["player"]]
 script = ExtResource("1_ru62r")
 sprint_speed = 200.0
+
+[node name="PlayerHUD" parent="." unique_id=737009381 instance=ExtResource("2_oomub")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=514011017]
 sprite_frames = SubResource("SpriteFrames_dferu")

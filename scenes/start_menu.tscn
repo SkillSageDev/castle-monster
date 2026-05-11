@@ -5,6 +5,9 @@
 [ext_resource type="Theme" uid="uid://btf11hucsyyw6" path="res://themes/button_theme.tres" id="3_is4df"]
 [ext_resource type="PackedScene" uid="uid://8o3gjgbud33w" path="res://assets/lion_eyes.glb" id="4_qmi4j"]
 [ext_resource type="Script" uid="uid://cxqmnmqgwo3x5" path="res://scripts/lion_eyes.gd" id="5_j064f"]
+[ext_resource type="AudioStream" uid="uid://cr44ojio4l1fg" path="res://audio/start_menu_music.wav" id="6_4v6gu"]
+[ext_resource type="AudioStream" uid="uid://b7ph5asw5uoim" path="res://audio/click.wav" id="7_u4qax"]
+[ext_resource type="AudioStream" uid="uid://c80k0m2wkp4tn" path="res://audio/hover.wav" id="8_5byqq"]
 
 [sub_resource type="Gradient" id="Gradient_iwxrf"]
 offsets = PackedFloat32Array(0.9752475, 1)
@@ -124,4 +127,19 @@ transform = Transform3D(-0.9975151, 0, -0.07045284, 0, 1, 0, 0.07045284, 0, -0.9
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, -9.587718)
 script = ExtResource("5_j064f")
 
+[node name="Sounds" type="Node" parent="." unique_id=992195215]
+
+[node name="BackgroundSound" type="AudioStreamPlayer" parent="Sounds" unique_id=1926299620]
+stream = ExtResource("6_4v6gu")
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="Sounds" unique_id=508144766]
+stream = ExtResource("7_u4qax")
+
+[node name="HoverSound" type="AudioStreamPlayer" parent="Sounds" unique_id=934537188]
+stream = ExtResource("8_5byqq")
+volume_db = -10.0
+
+[connection signal="button_down" from="CanvasLayer/MarginContainer/VBoxContainer/Start" to="." method="_on_start_button_down"]
+[connection signal="mouse_entered" from="CanvasLayer/MarginContainer/VBoxContainer/Start" to="." method="_on_start_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_mouse_entered"]

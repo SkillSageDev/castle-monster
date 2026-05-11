@@ -1,16 +1,16 @@
 [gd_scene format=3 uid="uid://cpemeddr2tefm"]
 
-[ext_resource type="Script" uid="uid://ddkfbr7r0w28x" path="res://scripts/win_scene.gd" id="1_lw2vd"]
-[ext_resource type="PackedScene" uid="uid://dsb32ghrxbwr5" path="res://scenes/start_menu.tscn" id="2_8w6tn"]
+[ext_resource type="Script" uid="uid://buohw1x0qp147" path="res://scripts/lose_scene.gd" id="1_8w6tn"]
 [ext_resource type="Theme" uid="uid://deyjpiakrxdkb" path="res://themes/title_theme.tres" id="3_c3pwq"]
 [ext_resource type="Theme" uid="uid://btf11hucsyyw6" path="res://themes/button_theme.tres" id="4_5jhep"]
+[ext_resource type="AudioStream" uid="uid://b7ph5asw5uoim" path="res://audio/click.wav" id="6_wknd0"]
+[ext_resource type="AudioStream" uid="uid://c80k0m2wkp4tn" path="res://audio/hover.wav" id="7_6ve87"]
 
 [sub_resource type="Theme" id="Theme_e41g7"]
 
 [node name="LoseScene" type="CanvasLayer" unique_id=373509027]
 process_mode = 3
-script = ExtResource("1_lw2vd")
-start_menu = ExtResource("2_8w6tn")
+script = ExtResource("1_8w6tn")
 
 [node name="Background" type="ColorRect" parent="." unique_id=389109020]
 anchors_preset = 15
@@ -53,5 +53,18 @@ offset_bottom = 318.0
 theme = ExtResource("4_5jhep")
 text = "Accept Your Fate"
 
+[node name="Sounds" type="Node" parent="." unique_id=914625569]
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="Sounds" unique_id=2039468692]
+stream = ExtResource("6_wknd0")
+
+[node name="HoverSound" type="AudioStreamPlayer" parent="Sounds" unique_id=1147123596]
+stream = ExtResource("7_6ve87")
+volume_db = -10.0
+
+[connection signal="button_down" from="Retry" to="." method="_on_retry_button_down"]
+[connection signal="mouse_entered" from="Retry" to="." method="_on_retry_mouse_entered"]
 [connection signal="pressed" from="Retry" to="." method="_on_retry_pressed"]
+[connection signal="button_down" from="Back" to="." method="_on_back_button_down"]
+[connection signal="mouse_entered" from="Back" to="." method="_on_back_mouse_entered"]
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

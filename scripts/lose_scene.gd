@@ -15,6 +15,7 @@ func _on_back_pressed() -> void:
 	click_sound.play()
 	await get_tree().create_timer(0.5, true).timeout
 	get_tree().change_scene_to_file("res://scenes/start_menu.tscn")
+	
 
 
 func _on_retry_mouse_entered() -> void:

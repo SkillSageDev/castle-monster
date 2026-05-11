@@ -10,16 +10,13 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if(Global.player_health == 0):
-		get_tree().root.add_child(lose_scene.instantiate())
-		get_tree().paused = true
+	if(Global.player_health <= 0):
+		get_tree().change_scene_to_file("res://scenes/lose_scene.tscn")
 
 
 func _on_exit_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group('player'):
-
 		if Global.coins == 5:
-			get_tree().root.add_child(win_scene.instantiate())
-			get_tree().paused = true
+			get_tree().change_scene_to_file("res://scenes/win_scene.tscn")
 
 			print("You Won")

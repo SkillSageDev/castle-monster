@@ -46,7 +46,6 @@ func physics_update(_delta: float):
 
 
 func update(_delta: float):
-	
 	if Global.monster_health ==0:
 		chase_time.stop()
 		transitioned.emit(self,death_state.name)

@@ -19,7 +19,7 @@ metadata/_snap_enabled = true
 [sub_resource type="Environment" id="Environment_ljr2e"]
 ambient_light_energy = 0.0
 
-[node name="StartMenu" type="Control" unique_id=1883624502]
+[node name="TestSceneStartMenu3D" type="Control" unique_id=1883624502]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
